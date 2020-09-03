@@ -9,13 +9,20 @@ const path = require('path')
 
 const DbyAISpeechSDK = require('dby-ai-speech-node-sdk')
 
-const dllFilePath = path.resolve(__dirname, './dby-ai-speech-node.dll')
-const sdk = new DbyAISpeechSDK(dllFilePath)
+const sdk = new DbyAISpeechSDK(path.resolve(__dirname, './dllfiles'))
 
-sdk.init('', '', '', '').then(() => {
-    sdk.joinChannel('', '').then(() =>{
+sdk.init('#dbyAppId', '#dbyAppKey', '#aiSpeechAppId', '#aiSpeechAppKey').then(() => {
+    console.log('sdk init success')
+
+    sdk.joinChannel('#channelId', '#uid').then(() =>{
+        console.log('sdk join channel success')
+
         sdk.onUserText((uid, text) =>{
-            console.log('on user test ', uid, text)
+            console.log('on user text ', uid, text)
         })
+    }).catch((e) => {
+        console.log('sdk join channel failed ', e)
     })
+}).catch((e) => {
+    console.log('sdk init failed ', e)
 })

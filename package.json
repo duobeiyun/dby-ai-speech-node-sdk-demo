@@ -21,7 +21,7 @@
     "electron": "4.2.10"
   },
   "dependencies": {
-    "dby-ai-speech-node-sdk": "^1.0.10",
+    "dby-ai-speech-node-sdk": "^1.0.19",
     "electron-builder": "^22.8.0"
   }
 }
